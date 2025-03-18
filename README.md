@@ -2,11 +2,12 @@
 
 TalkX 是一个基于大模型实现的聊天平台，界面适配移动端，并且衍生出了 [编程插件](https://github.com/big-mouth-cn/talkx-plugin-for-jetbrains)、[小智ESP智能机器人](https://github.com/big-mouth-cn/xiaozhi-esp32-for-talkx)等能力。
 
-TalkX 在生产环境上稳定运行时间超过两年，当搭建中间件配置后，即可支持集群生产部署。
+**TalkX 在生产环境上稳定运行时间超过两年，当搭建中间件配置后，即可支持集群生产部署。**
 
 ## 什么场景下需要部署TalkX？
 - 私有化部署自己的“Chat”聊天应用。
-- 私有化部署小智ESP32服务端，自定义大模型、记忆及声音复刻等。（🔥仅需创建数据库即可快速体验）
+- 私有化部署小智ESP32服务端，自定义大模型、记忆及声音复刻等。（🔥仅需创建数据库即可快速体验）  
+[【点击这里】](https://github.com/big-mouth-cn/xiaozhi-server4j)*进一步了解小智ESP32固件与绑定相关资料。*
 - 研究与学习大模型的应用。
 - 在此基础上进行二次开发。
 
