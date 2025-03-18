@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.bigmouth.gpt.mapper.talkx.UserMapper">
+
+    <select id="getCoin" resultType="java.math.BigDecimal">
+        SELECT coin FROM `user` WHERE id = #{id}
+    </select>
+
+    <update id="plusCoin">
+        UPDATE `user` SET coin = coin + #{value} WHERE id = #{id};
+    </update>
+
+    <update id="minusCoin">
+        UPDATE `user` SET coin = coin - #{value} WHERE id = #{id};
+    </update>
+<!--    <update id="minusCoin">-->
+<!--        UPDATE `user` SET coin = coin - #{value} WHERE id = #{id} AND coin - #{value} >= 0;-->
+<!--    </update>-->
+</mapper>

@@ -1,0 +1,142 @@
+.markdown-body {
+	/** color: var(--tp_message_color); **/
+	background-color: transparent;
+	font-size: var(--tp_size);
+
+	p {
+		white-space: pre-wrap; 
+		
+	}
+
+	ol {
+		list-style-type: decimal;
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	pre code,
+	pre tt {
+		line-height: 1.65;
+	}
+
+	.highlight pre,
+	pre {
+		background-color: #fff;
+	}
+
+	code.hljs {
+		padding: 0;
+	}
+
+	.code-block {
+		&-wrapper {
+			position: relative;
+			padding-top: 24px;
+		}
+
+		&-header {
+			position: absolute;
+			top: 5px;
+			right: 0;
+			width: 100%;
+			padding: 0 1rem;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			color: #b3b3b3;
+
+			&__copy {
+				cursor: pointer;
+				margin-left: 0.5rem;
+				user-select: none;
+
+				&:hover {
+					color: #65a665;
+				}
+			}
+		}
+	}
+
+}
+
+
+.markdown-body {
+	background-color: transparent;
+	font-size: var(--tp_size);
+}
+
+.markdown-body p {
+	white-space: pre-wrap;
+}
+
+.markdown-body ol {
+	list-style-type: decimal;
+}
+
+.markdown-body ul {
+	list-style-type: disc;
+}
+
+.markdown-body pre code,
+.markdown-body pre tt {
+	line-height: 1.65;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+	background-color: #fff;
+	background-color: var(--tp_pre_bgcolor);
+}
+
+.markdown-body code.hljs {
+	/*padding: 0;*/
+}
+
+.markdown-body .code-block-wrapper {
+	position: relative;
+	padding-top: 24px;
+}
+
+.markdown-body .code-block-header {
+	box-sizing: border-box;
+	position: absolute;
+	top: 5px;
+	right: 0;
+	width: 100%;
+	padding: 0 1rem;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	color: #b3b3b3; 
+}
+
+.markdown-body .code-block-header__copy {
+	cursor: pointer;
+	margin-left: 0.5rem;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.markdown-body .code-block-header__unfold:hover,
+.markdown-body .code-block-header__inset:hover,
+.markdown-body .code-block-header__contrast:hover,
+.markdown-body .code-block-header__copy:hover {
+	color: #ffff; 
+}
+
+.markdown-body .code-block-body {
+	margin: -35px 0;
+}
+
+html.dark .message-reply .whitespace-pre-wrap {
+	white-space: pre-wrap;
+	color: var(--n-text-color);
+}
+
+html.dark .highlight pre,
+html.dark pre {
+	background-color: #282c34;
+}

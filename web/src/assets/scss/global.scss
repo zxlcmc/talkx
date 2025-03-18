@@ -1,0 +1,38 @@
+/** 全局使用scss方法*/
+
+@mixin posTL($top, $left) {
+    position: absolute;
+    top: $top;
+    left: $left;
+}
+
+
+@mixin oneOverFlow() {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin textOverflow($row: 2) {
+    display: -webkit-box;
+    -webkit-line-clamp: $row; //限制文本的行数，只显示两行
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@mixin aWH($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+@mixin posCenter {
+    @include posTL(50%, 50%);
+    transform: translate(-50%, -50%);
+}
+
+
+@mixin font($size, $color: inherit, $weight: 400) {
+    font-size: $size;
+    color: $color;
+    font-weight: $weight;
+}

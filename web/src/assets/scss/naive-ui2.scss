@@ -1,0 +1,235 @@
+/** n-upload */
+.n-upload-file-list .n-upload-file.n-upload-file--image-card-type {
+    border: 1px solid var(--blue);
+}
+
+
+/** n-tabs */
+.n-tabs .n-tabs-tab {
+    color: var(--tp_aside_hover_color);
+}
+
+.n-tabs .n-tab-pane {
+    color: var(--tp_textcolor);
+}
+
+.n-tabs .n-tabs-nav.n-tabs-nav--card-type .n-tabs-tab {
+    color: var(--tp_aside_hover_color);
+}
+
+.n-tabs.n-tabs--line-type .n-tabs-tab:hover,
+.n-tabs.n-tabs--line-type .n-tabs-tab.n-tabs-tab--active,
+.n-tabs.n-tabs--bar-type .n-tabs-tab.n-tabs-tab--active {
+    color: var(--blue);
+}
+
+.n-tabs .n-tabs-bar {
+    background-color: var(--blue);
+}
+
+
+
+/** n-select 的列表部分 */
+.n-base-selection .n-base-selection-label {
+    background-color: transparent
+}
+
+.n-base-selection:not(.n-base-selection--disabled).n-base-selection--active .n-base-selection-label {
+    background-color: transparent
+}
+
+.n-base-selection:not(.n-base-selection--disabled).n-base-selection--active .n-base-selection-tags {
+    background-color: transparent
+}
+
+.n-base-selection .n-base-selection__border,
+.n-base-selection .n-base-selection__state-border {
+    border: 1px solid var(--border_color);
+}
+
+.n-base-selection:not(.n-base-selection--disabled):hover .n-base-selection__state-border {
+    border: 1px solid var(--tp_focus_bordecolor);
+}
+
+.n-base-selection:not(.n-base-selection--disabled).n-base-selection--focus .n-base-selection__state-border {
+    border: 1px solid var(--tp_focus_bordecolor);
+    box-shadow: 0 0 0 2px rgba($color: var(--tp_focus_bordecolor), $alpha: 0.2);
+}
+
+.n-base-selection .n-base-selection-label .n-base-selection-input {
+    color: var(--tp_textcolor);
+}
+
+
+
+/** n-select */
+.n-base-select-menu {
+    background-color: var(--tp_aside_bg_color);
+}
+
+.n-base-select-menu .n-base-select-option {
+    color: var(--tp_textcolor);
+}
+
+.n-base-select-menu .n-base-select-option.n-base-select-option--selected {
+    color: var(--tp_focus_bordecolor);
+}
+
+.n-base-select-menu .n-base-select-option.n-base-select-option--pending::before {
+    background-color: var(--tp_aside_hover_bg_color)
+}
+
+.n-base-select-menu .n-base-select-option:active,
+.n-base-select-menu .n-base-select-option .n-base-select-option__check {
+    color: var(--tp_focus_bordecolor);
+}
+
+.n-base-select-menu .n-base-select-option.n-base-select-option--selected.n-base-select-option--pending::before {
+    background-color: var(--tp_aside_hover_bg_color)
+}
+
+
+/** n-popover */
+.n-popover,
+.n-popover:not(.n-popover--raw) {
+    color: var(--tp_aside_color);
+    background-color: var(--tp_aside_bg_color);
+}
+
+.n-popover.n-popover-shared {
+    border-radius: 5px;
+}
+
+.n-popover.n-popover-shared .n-popover-arrow-wrapper .n-popover-arrow {
+    background-color: var(--tp_aside_bg_color);
+}
+
+
+/** n-slider */
+.n-slider .n-slider-rail {
+    transform: scaleY(0.75);
+    background-color: var(--silder_bg_color);
+}
+
+.n-slider:hover .n-slider-rail {
+    background-color: var(--silder_bg_color);
+}
+
+.n-slider.n-slider--active .n-slider-rail .n-slider-rail__fill,
+.n-slider:hover .n-slider-rail .n-slider-rail__fill,
+.n-slider .n-slider-rail .n-slider-rail__fill {
+    background-color: var(--silder_fill_color);
+}
+
+.n-slider .n-slider-handles .n-slider-handle-wrapper .n-slider-handle {
+    transform-origin: left;
+    transform: scaleX(0.75) translateX(-1px);
+    background-color: var(--silder_handle_color);
+}
+
+.n-slider-handle-indicator {
+    color: var(--tp_aside_color);
+    background-color: var(--tp_share_bg_color);
+}
+
+
+/** n-button */
+.n-button.n-button--default-type {
+    color: var(--tp_aside_color);
+}
+
+.n-button.n-button--default-type .n-button__border {
+    border: 1px solid var(--btn_close_bg_color);
+}
+
+.n-button .n-base-wave.n-base-wave--active {
+    --n-ripple-color: var(--blue);
+}
+
+.n-button:not(.n-button--disabled):focus .n-button__state-border {
+    color: var(--tp_aside_color);
+    border: 1px solid var(--btn_close_bg_color);
+}
+
+
+/** n-dropdown */
+.n-dropdown.n-dropdown-menu {
+    background-color: var(--tp_userList_bgcolor);
+}
+
+.n-dropdown.n-dropdown-menu.n-popover-shared {
+    border-radius: 0;
+}
+
+.n-dropdown-menu .n-dropdown-option {
+    min-width: 120px;
+    text-align: center;
+}
+
+.n-dropdown-menu .n-dropdown-option .n-dropdown-option-body {
+    height: 28px;
+    line-height: 28px;
+    color: var(--tp_aside_color);
+}
+
+.n-dropdown-menu .n-dropdown-option .n-dropdown-option-body .n-dropdown-option-body__prefix {
+    color: var(--tp_aside_color);
+}
+
+.n-dropdown-menu .n-dropdown-option .n-dropdown-option-body:not(.n-dropdown-option-body--disabled).n-dropdown-option-body--pending {
+    color: var(--tp_aside_hover_color);
+}
+
+.n-dropdown-menu .n-dropdown-option .n-dropdown-option-body:not(.n-dropdown-option-body--disabled).n-dropdown-option-body--pending .n-dropdown-option-body__prefix,
+.n-dropdown-menu .n-dropdown-option .n-dropdown-option-body:not(.n-dropdown-option-body--disabled).n-dropdown-option-body--pending .n-dropdown-option-body__suffix {
+    color: var(--tp_aside_hover_color);
+}
+
+.n-dropdown-menu .n-dropdown-option .n-dropdown-option-body:not(.n-dropdown-option-body--disabled).n-dropdown-option-body--pending::before {
+    background-color: var(--tp_aside_hover_bg_color);
+}
+
+
+/** _input n-input*/
+._input.n-input {
+    line-height: 34px;
+    font-size: var(--tp_size);
+    background-color: transparent;
+}
+
+._input.n-input .n-input__input .n-input__input-el,
+._input.n-input .n-input__textarea .n-input__textarea-el {
+    color: var(--tp_textcolor);
+}
+
+._input.n-input .n-input__input-el,
+._input.n-input .n-input__textarea-el {
+    caret-color: var(--blue);
+}
+
+._input.n-input:not(.n-input--disabled).n-input--focus {
+    background-color: transparent;
+}
+
+._input.n-input .n-input__border {
+    border: 1px solid var(--border_color)
+}
+
+._input.n-input:not(.n-input--disabled):hover .n-input__state-border {
+    border: 1px solid var(--tp_focus_bordecolor)
+}
+
+._input.n-input:not(.n-input--disabled).n-input--focus .n-input__state-border {
+    border: 1px solid var(--tp_focus_bordecolor);
+    box-shadow: 0 0 0 2px rgba($color: var(--tp_focus_bordecolor), $alpha: 0.2);
+}
+
+
+.n-input .n-input__placeholder {
+    color: var(--tp_placeholder_color);
+    opacity: 1;
+}
+
+.n-card > .n-card-header .n-card-header__main {
+    color: var(--tp_avatar_color);
+}

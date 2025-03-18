@@ -1,0 +1,11 @@
+{
+  "wanwa_xiaohe": {
+    "name": "湾湾小何",
+    "platformType": "bytedance",
+    "role": "zh_female_wanwanxiaohe_moon_bigtts",
+    "languages": [
+      "中文"
+    ],
+    "demoUrl": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lm_hz_ihsph/ljhwZthlaukjlkulzlp/portal/bigtts/%E6%B9%BE%E6%B9%BE%E5%B0%8F%E4%BD%95.mp3"
+  }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.bigmouth.gpt.mapper.talkx.CoinBillMapper">
+
+    <select id="sumByDate" resultType="java.math.BigDecimal">
+        SELECT
+            sum(`value`)
+        FROM
+            coin_bill WHERE DATE_FORMAT(create_time, '%Y-%m-%d') = #{date} AND type = #{type}
+    </select>
+</mapper>

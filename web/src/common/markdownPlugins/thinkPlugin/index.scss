@@ -1,0 +1,77 @@
+// 样式适配问题
+// think 区域 使用markdown 渲染
+// think 嵌套 ??
+// think 不完整 --over
+
+.custom-think {
+    .think-header {
+        cursor: pointer;
+        color: var(--tp_textcolor);
+        font-size: 12px;
+        display: inline-flex;
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+        background-color: #e5e5e5;
+        
+        &:hover {
+            background: #d9d8d8;
+        }
+
+        .text {
+            height: 20px;
+            line-height: 20px;
+            pointer-events: none;
+        }
+
+        .icon {
+            height: 20px;
+            margin-left: 5px;
+            line-height: 24px;
+            pointer-events: none;
+
+            svg {
+                margin-top: 2px;
+                height: 1.2em;
+                width: 1.2em;
+                transition: transform 0.3s;
+                transform: rotate(0);
+            }
+        }
+    }
+
+    .think-wrapper {
+        display: none;
+    }
+
+    &.active {
+        .think-header {
+            .icon {
+                svg {
+
+                    transform: rotate(180deg);
+                }
+            }
+
+
+        }
+
+        .think-wrapper {
+            display: block;
+        }
+    }
+}
+
+
+html.dark {
+    .custom-think {
+        .think-header {
+            background-color: rgb(73, 73, 73); 
+            &:hover {
+                background: rgba(73, 73, 73, .8);
+            }
+        }
+
+      
+    }
+}

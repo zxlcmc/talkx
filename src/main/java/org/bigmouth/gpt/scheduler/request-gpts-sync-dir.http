@@ -1,0 +1,7 @@
+POST http://localhost:8080/friend/readFilesAndToDB
+Content-Type: application/x-www-form-urlencoded
+talkx-token: 30d7b234a3684c77aa4e985a500c4955
+
+dir=/Users/huxiao/Documents/gpts/
+
+###

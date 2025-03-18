@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.bigmouth.gpt.mapper.talkx.FriendMapper">
+    <resultMap id="FriendTagCount" type="org.bigmouth.gpt.entity.FriendTagCount">
+        <result column="name" property="name" />
+        <result column="count" property="count" />
+    </resultMap>
+    <select id="countFriendTag" resultMap="FriendTagCount">
+        SELECT `tag` as `name`, count(1) as `count` FROM friend WHERE is_public = 1 AND deleted = 0 GROUP BY tag;
+    </select>
+</mapper>

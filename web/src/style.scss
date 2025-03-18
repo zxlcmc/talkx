@@ -1,0 +1,595 @@
+@import url(./assets/scss/init.scss);
+@import url(./assets/scss/naive-ui.scss);
+@import url(./assets/scss/naive-ui2.scss);
+
+
+:root {
+  --media_with: 600px;
+  --msg_content-width: 1024px;
+  --blue: #4098fc;
+  --lebel_color: #DDDDDD;
+  --border_color: #797979;
+  --silder_fill_color: #DDDDDD;
+  ;
+  --silder_bg_color: #797979;
+  --silder_handle_color: #DDDDDD;
+
+  /* 顶部导航栏背景色 */
+  --tp_headerbgcolor: #212224;
+  /* 顶部导航列表背景 */
+  --tp_headerlistbgcolor: #44484a;
+  /* 底部发消息区景色 */
+  --tp_footer_bgcolor: #3c3f41;
+  /* 页面背景色 */
+  --tp_bgcolor: #3c3f41;
+  /* 头部导航背景色 */
+  --tp_topbar_bgcolor: #3c3f41;
+  /* 平台文字颜色 */
+  --tp_textcolor: #c4c9cc;
+  /* 边框线颜色 */
+  --tp_bordecolor: #515455;
+  /* 边框线focus颜色 */
+  --tp_focus_bordecolor: #007acc;
+  /* 错误按钮颜色 */
+  --tp_btn_error: #f24c4c;
+  /* 提问背景色 */
+  --tp_quize_bgcolor: #1f4085;
+  /* 回答背景色 */
+  --tp_answer_bgcolor: #44484a;
+
+  /* 代码区背景色 */
+  --tp_pre_bgcolor: #1e1e1e;
+  /* 代码区头部背景色 */
+  --tp_pre_header_bgcolor: rgba(0, 0, 0, 0);
+  /* 代码区icon颜色 */
+  --tp_pre_icon_color: #b3b3b3;
+  /* 代码区icon hover颜色 */
+  --tp_pre_icon_hover_color: #fff;
+
+  /* 消息区文本颜色 */
+  --tp_message_quize_color: #bbbbbb;
+  --tp_message_answer_color: #bbbbbb;
+  /* 字体大小 */
+  --tp_size: 13px;
+
+  /* 聚焦背景色 */
+  --tp_foucs_bg_color: #4c4c4c;
+  --tp_foucs_bg_color2: #007acc;
+  /* 会话区背景色 */
+  --tp_dl_bg_color: #303335;
+  /* add按钮背景色 */
+  --tp_addBtn_bg_color: #007acc;
+  /* add按钮颜色 */
+  --tp_addBtn_color: var(--tp_textcolor);
+  
+  /* 输入框颜色 */
+  --n-text-color: #fff;
+  /* 输入框光标 */
+  --n-caret-color: var(--tp_bordecolor);
+  /* 新会话试试hover颜色 */
+  --tp_nd_hover_bg_color: #4c4c4c;
+
+  /* ... hover color */
+  --tp_more_hover_color: #fff;
+  --tp_add_hover_color: #fff;
+  /* toast_color */
+  --tp_toast_color: #fff;
+
+  /* hover_light */
+  --tp_icon_hover_color: #fff;
+  --tp_icon_hover_color2: var(--tp_textcolor);
+
+  /* aside */
+  --tp_aside_color: #C5C9CC;
+  --tp_aside_hover_color: #FFFFFF;
+  --tp_aside_bg_color: #3d3f41;
+  --tp_aside_hover_bg_color: #323335;
+  --tp_aside_border_color: #282828;
+
+  /* avatar */
+  --tp_avatar_color: #fff;
+
+  /* 消息区500状态码的颜色*/
+  --tp_500_color: #FFC35B;
+
+  /** 邀请码颜色 */
+  --tp_invite_color: #FFF7F7;
+  /** 邀请码文案颜色 */
+  --tp_invite_text_color: #C4C9CC;
+  /** 邀请码文案背景色 */
+  --tp_invite_text_bgcolor: #1f1e1e;
+
+  /** 蒜粒数量颜色 */
+  --tp_hashrate_color: #fff;
+
+  /** 分享页面背景 */
+  --tp_share_bg_color: #000;
+  /** 分享页面声明颜色 */
+  --tp_share_statement_color: #848484;
+  /** 消息通知列表页字体颜色 */
+  --tp_notify_color: #C4C9CC;
+
+  /** 输入区key颜色 */
+  --tp_key_active_color: #53F135;
+
+  /** 模型选择页面查看模型颜色 */
+  --tp_model_look_color: #ffab04;
+
+  /** pc模式下消息提问字体颜色  */
+  --pc_message_quize_color: #CCCCCC;
+  /** pc模式下消息回答字体颜色  */
+  --pc_message_answer_color: #CCCCCC;
+  /** pc模式下输入框聚焦边框颜色  */
+  --pc_focus_bordecolor: #5974ff;
+
+  /** 好友列表icon背景色  */
+  --tp_friend_icon_color: var(--tp_textcolor);
+  --tp_friend_icon_bg_color: #4c4c4c;
+  /** 好友列表icon选中背景色  */
+  --tp_friend_icon_hover_color: var(--tp_textcolor);
+  --tp_friend_icon_hover_bg_color: var(--tp_friend_icon_bg_color);
+  --tp_friend_icon_active_color: var(--tp_textcolor);
+  --tp_friend_icon_active_bg_color: #323335;
+
+  /** 好友广场 tag hcolor */
+  --tp_friend_tag_bg: #4B4D4F;
+  /** 好友广场 tag hover bgcolor */
+  --tp_friend_tag_hover_bg: #4B4D4F;
+  /** 好友广场 tag active bgcolor */
+  --tp_friend_tag_active_bg: #201E1E;
+  /** 好友广场卡牌desc颜色 */
+  --tp_FriendCard_color: var(--tp_textcolor);
+  --tp_FriendCard_bg_color: var(--tp_headerlistbgcolor);
+  --tp_FriendCard_hover_color: var(--tp_aside_hover_color);
+  --tp_FriendCard_hover_bg_color: var(--tp_friend_tag_hover_bg);
+  --tp_FriendCard_active_color: var(--tp_FriendCard_hover_color);
+  --tp_FriendCard_active_bg_color: var(--tp_friend_tag_active_bg);
+
+  /** 部分列表item背景色 */
+  --tp_item_bg_color: #4d4e4f;
+
+  /** userList背景色 */
+  --tp_userList_bgcolor: var(--tp_headerlistbgcolor);
+  /** userList item hover 背景色 */
+  --tp_userList_hover_bgcolor: var(--tp_aside_hover_bg_color);
+
+  /** 好友广场 */
+  --tp_fp_color: var(--tp_avatar_color);
+  --tp_fp_bgcolor: var(--tp_dl_bg_color);
+  --tp_fp_hover_color: var(--tp_avatar_color);
+  --tp_fp_hover_bgcolor: var(--tp_dl_bg_color);
+
+
+
+  --btn_close_color: #DDDDDD;
+  --btn_close_bg_color: #393939;
+  --btn_close_hover_color: var(--close_btn_color);
+  --btn_close_hover_bg_color: #4f4f4f;
+
+  --btn_confirm_color: #ffff;
+  --btn_confirm_bg_color: #1F80f0;
+  --btn_confirm_hover_color: var(--btn_confirm_color);
+  --btn_confirm_hover_bg_color: #4098fc;
+
+
+  /** 会话页文件列表字体色 */
+  --tp_d_filelist_color: #C5C9CC;
+  --tp_d_filelist_bgColor: #535353;
+
+
+  --tp_header_list_color: #FFFFFF;
+
+  --tp_placeholder_color: #646464;
+}
+
+.light:root {
+  --lebel_color: #6e6e6e;
+  --border_color: #797979;
+  --silder_fill_color: #6E6E6E;
+  --silder_bg_color: #c6c6c6;
+  --silder_hover_bg_color: var(--silder_bg_color);
+  --silder_handle_color: #6E6E6E;
+
+  /* 顶部导航栏背景色 */
+  --tp_headerbgcolor: #e2e6ec;
+  /* 顶部导航列表背景 */
+  --tp_headerlistbgcolor: #d5d5d5;
+  /* 底部发消息区景色 */
+  --tp_footer_bgcolor: #fff;
+  /* 页面背景色 */
+  --tp_bgcolor: #ffffff;
+  /* 平台文字颜色 */
+  --tp_textcolor: #6e6e6e;
+  /* 头部导航背景色 */
+  --tp_topbar_bgcolor: #ffffff;
+  /* 边框线颜色 */
+  --tp_bordecolor: #D1D1D1;
+
+  /* 错误按钮颜色 */
+  --tp_btn_error: #f24c4c;
+  /* 提问背景色 */
+  --tp_quize_bgcolor: #2073c2;
+  /* 回答背景色 */
+  --tp_answer_bgcolor: #fff;
+  /* 消息区文本颜色 */
+  --tp_message_quize_color: #fff;
+  --tp_message_answer_color: #000;
+
+  /* 代码区背景色 */
+  --tp_pre_bgcolor: #f7f7f7;
+  /* 代码区头部背景色 */
+  --tp_pre_header_bgcolor: #eaeaea;
+  /* 代码区icon颜色 */
+  --tp_pre_icon_color: #6E6E6E;
+  /* 代码区icon hover颜色 */
+  --tp_pre_icon_hover_color: #000000;
+
+  /* 消息区文本颜色 */
+  --tp_message_color: #6E6E6E;
+  --tp_size: 13px;
+
+  /* 聚焦背景色 */
+  --tp_foucs_bg_color: #EEEEEE;
+  /*#f2f2f2;*/
+  --tp_foucs_bg_color2: #007acc;
+  /* 边框线focus颜色 */
+  // --tp_focus_bordecolor: #D1D1D1; 
+  --tp_focus_bordecolor: #007acc;
+  /* 会话区背景色 */
+  --tp_dl_bg_color: #f1f2f3; //#f2f2f2;
+
+  /* add按钮颜色 */
+  --tp_addBtn_color: #ffffff;
+  /* add按钮背景色 */
+  --tp_addBtn_bg_color: #007acc;
+
+  /* 输入框颜色 */
+  --n-text-color: #000;
+  /* 输入框光标 */
+  --n-caret-color: #000;
+  /* 新会话试试hover颜色 */
+  --tp_nd_hover_bg_color: #ffffff;
+
+  /* ... hover color */
+  --tp_more_hover_color: #000;
+  --tp_add_hover_color: #fff;
+  /* toast_color */
+  --tp_toast_color: #000;
+
+  /* hover_light */
+  --tp_icon_hover_color: #333;
+
+  --tp_icon_hover_color2: #fff;
+
+  /* aside */
+  --tp_aside_color: #6F6E6E;
+  --tp_aside_hover_color: #000000;
+  --tp_aside_bg_color: #fff;
+  --tp_aside_hover_bg_color: #f3f2f2;
+  --tp_aside_border_color: #CCCCCC;
+
+  /* avatar */
+  --tp_avatar_color: #000;
+
+  /* 消息区500状态码的颜色*/
+  --tp_500_color: #A28700;
+
+  /** 邀请码颜色 */
+  --tp_invite_color: #000000;
+  /** 邀请码文案颜色 */
+  --tp_invite_text_color: #000;
+  /** 邀请码文案背景色 */
+  --tp_invite_text_bgcolor: #fff;
+
+  /** 蒜粒数量颜色 */
+  --tp_hashrate_color: #000;
+
+  /** 分享页面背景 */
+  --tp_share_bg_color: #f3f2f2;
+  /** 分享页面声明颜色 */
+  --tp_share_statement_color: #6e6e6e;
+
+  /** 消息通知列表页字体颜色 */
+  --tp_notify_color: #333333;
+
+  /** 输入区key颜色 */
+  --tp_key_active_color: #1FC27E;
+
+  /** 模型选择页面查看模型颜色 */
+  --tp_model_look_color: #5954ff;
+
+
+  /** pc模式下消息提问字体颜色  */
+  --pc_message_quize_color: #000;
+  /** pc模式下消息回答字体颜色  */
+  --pc_message_answer_color: #000;
+  /** pc模式下输入框聚焦边框颜色  */
+  --pc_focus_bordecolor: #5974ff;
+
+  /** 好友列表icon背景色  */
+  --tp_friend_icon_color: #6E6E6E;
+  --tp_friend_icon_bg_color: #EEEEF8;
+  /** 好友列表icon选中背景色  */
+  --tp_friend_icon_hover_color: #000000;
+  --tp_friend_icon_hover_bg_color: #f3f2f2;
+  --tp_friend_icon_active_color: #000000;
+  --tp_friend_icon_active_bg_color: #E0E1E3;
+
+  /** 好友广场 tag hover bgcolor */
+  --tp_friend_tag_hover_bg: #e5e5e5;
+  /** 好友广场 tag active bgcolor */
+  --tp_friend_tag_active_bg: #FFFFFF;
+  /** 好友广场卡牌desc颜色 */
+  --tp_FriendCard_color: #6e6e6e;
+  --tp_FriendCard_bg_color: #fff;
+  --tp_FriendCard_hover_color: #000;
+  --tp_FriendCard_hover_bg_color: #f9f9f9;
+  --tp_FriendCard_active_color: var(--tp_FriendCard_hover_color);
+  --tp_FriendCard_active_bg_color: #E0E1E3;
+
+  /** 部分列表item背景色 */
+  --tp_item_bg_color: #dedede;
+
+  /** userList背景色 */
+  --tp_userList_bgcolor: #ffffff;
+  /** userList item hover 背景色 */
+  --tp_userList_hover_bgcolor: #E0E1E3;
+
+  /** 好友广场 */
+  --tp_fp_color: #6e6e6e;
+  --tp_fp_bgcolor: #ffff;
+
+
+  --btn_close_color: #6E6E6E;
+  --btn_close_bg_color: #E0E1E3;
+  --btn_close_hover_color: var(--close_btn_color);
+  --btn_close_hover_bg_color: #D6D6D6;
+
+  --btn_confirm_color: #ffff;
+  --btn_confirm_bg_color: #1F80f0;
+  --btn_confirm_hover_color: var(--btn_confirm_color);
+  --btn_confirm_hover_bg_color: #4098fc;
+
+
+
+  /** 会话页文件列表字体色 */
+  --tp_d_filelist_bgColor: #Ffff;
+  --tp_d_filelist_color: #6E6E6E;
+
+
+  --tp_header_list_color: #000000;
+
+  .dialogue.small {
+    --tp_d_filelist_bgColor: #F1F1F1;
+  }
+
+  --tp_placeholder_color: #c2c2c2;
+}
+
+
+.card {
+  padding: 2em;
+}
+
+
+
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+
+
+#app {
+  width: 100%;
+  height: 100%;
+
+  // width: 80%;
+  // height: 90%;
+  // max-width: 1024px;
+  // margin: 5vh auto;
+  transition: all 0.2s;
+
+  &.shadow {
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, .5);
+  }
+
+  &.share {
+    width: 100%;
+    background-color: var(--tp_share_bg_color);
+  }
+
+  &.full {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    margin: auto;
+  }
+
+
+  ._close_btn {
+    color: var(--btn_close_color);
+    background-color: var(--btn_close_bg_color);
+
+    .n-button__border {
+      border-color: var(--btn_close_bg_color);
+    }
+
+    &:hover,
+    &:not(.n-button--disabled):active {
+      color: var(--btn_close_hover_color);
+      background-color: var(--btn_close_hover_bg_color);
+
+      .n-button__state-border {
+        border-color: var(--btn_close_hover_bg_color);
+      }
+    }
+  }
+
+  ._confirm_btn {
+    color: var(--btn_confirm_color);
+    background-color: var(--btn_confirm_bg_color);
+
+    .n-button__border {
+      border-color: var(--btn_confirm_bg_color);
+    }
+
+    &:hover,
+    &:not(.n-button--disabled):active {
+      color: var(--btn_confirm_hover_color);
+      background-color: var(--btn_confirm_hover_bg_color);
+
+      .n-button__state-border {
+        border-color: var(--btn_confirm_hover_bg_color);
+      }
+    }
+  }
+}
+
+
+.driver-active .driver-active-element,
+.driver-active .driver-active-element * {
+  cursor: auto;
+  pointer-events: none !important;
+}
+
+body {
+  &.gray {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+  }
+
+  &.IDE {
+    background-image: none;
+
+    #app {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      max-width: 100%;
+    }
+  }
+
+  &.WEB {
+    // background-size: 100% 100%;
+    // background-image: url(./assets/talkxbg.jpeg);
+  }
+}
+
+
+.tpage {
+  font-size: var(--tp_size);
+  box-sizing: border-box;
+  color: var(--tp_textcolor);
+
+  .topbar {
+    height: 52px;
+    padding: 10px;
+    line-height: 52px;
+    margin-bottom: 1px;
+    box-sizing: border-box;
+    background-color: var(--tp_footer_bgcolor);
+
+    .btn {
+      height: 32px;
+    }
+
+    .back {
+      height: 32px;
+      line-height: 32px;
+      padding: 0 10px 0 5px;
+      cursor: pointer;
+
+      .iconfont {
+        font-size: 20px;
+      }
+
+      .text {
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+.dot {
+  position: absolute;
+  top: 5px;
+  right: -5px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex_b {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex_end {
+  display: flex;
+  justify-content: end;
+}
+
+.flex_sx_center {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.hover_light:hover {
+  // filter: brightness(1.2);
+  color: var(--tp_icon_hover_color) !important;
+}
+
+.hover_light2:hover {
+  color: var(--tp_add_hover_color) !important;
+}
+
+.hover_color:hover {
+  color: var(--tp_more_hover_color) !important;
+}
+
+.hover_bg:hover {
+  background-color: var(--tp_foucs_bg_color);
+}
+
+.hover_bg3:hover {
+  color: var(--tp_friend_icon_hover_color);
+  background-color: var(-tp_friend_icon_hover_bg_color);
+}
+
+.hover_bg2:hover {
+  background-color: var(--tp_foucs_bg_color2);
+  color: var(--tp_icon_hover_color2) !important;
+
+  .xicon {
+    color: var(--tp_icon_hover_color2) !important;
+  }
+}
+
+/* 去除低版本chrome因为添加tabindex属性时，focus时出现的样式 */
+.hover_bg:focus,
+.hover_light:focus {
+  outline: none;
+}
+
+.loading {
+  padding: 5px;
+  text-align: center;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

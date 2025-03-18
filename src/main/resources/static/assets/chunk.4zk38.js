@@ -1,0 +1,1 @@
+function n(t){return new Promise((o,c)=>{try{const e=document.createElement("textarea");e.setAttribute("readonly","readonly"),e.value=t,document.body.appendChild(e),e.select(),document.execCommand("copy")&&document.execCommand("copy"),document.body.removeChild(e),o(!0)}catch(e){c(e)}})}export{n as c};
