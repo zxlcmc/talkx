@@ -2,7 +2,7 @@
 
 TalkX 是一个基于大模型实现的聊天平台，界面适配移动端，并且衍生出了 [编程插件](https://github.com/big-mouth-cn/talkx-plugin-for-jetbrains)、[小智ESP智能机器人](https://github.com/big-mouth-cn/xiaozhi-esp32-for-talkx)等能力。
 
-TalkX 从23年初至今，稳定运行在云服务器上，日活用户超过3千，每天处理超过10万条消息。
+TalkX 在生产环境上稳定运行时间超过两年，当搭建中间件配置后，即可支持集群生产部署。
 
 ## 什么场景下需要部署TalkX？
 - 私有化部署自己的“Chat”聊天应用。
