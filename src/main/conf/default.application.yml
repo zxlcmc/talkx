@@ -79,7 +79,7 @@ xiaozhi:
     # - sensevoice_fastapi：必须配置 forest.variables.sensevoiceFastApiUrl
     type: talkx
   silero:
-    model-path: src/main/conf/silero_vad.onnx
+    model-path: ../conf/silero_vad.onnx
     start-threshold: 0.6
     end-threshold: 0.45
     min-silence-duration-ms: 1200
