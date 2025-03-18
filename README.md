@@ -1,6 +1,6 @@
 # TalkX
 
-TalkX 是一个基于大模型实现的聊天平台，界面适配移动端，并且衍生出了 编程插件、小智智能机器人等能力。
+TalkX 是一个基于大模型实现的聊天平台，界面适配移动端，并且衍生出了 [编程插件](https://github.com/big-mouth-cn/talkx-plugin-for-jetbrains)、[小智ESP智能机器人](https://github.com/big-mouth-cn/xiaozhi-esp32-for-talkx)等能力。
 
 TalkX 从23年初至今，稳定运行在云服务器上，日活用户超过3千，每天处理超过10万条消息。
 
