@@ -55,3 +55,130 @@ TalkX 是一个基于大模型实现的聊天平台，界面适配移动端，�
 
 
 ## 配置文件说明
+
+### config
+
+基础配置项
+
+| 属性名 | 默认值 | 说明 |
+| --- | --- | --- |
+| config.llm-api-host | https://api.aigateway.work| 大模型服务接口地址 |
+| config.llm-api-key| sk-... | 大模型服务接口API |
+| config.enable-redis-cache | false | 是否开启Redis。|
+| config.jedis.host | 127.0.0.1 | Redis服务器连接IP|
+| config.jedis.password | | Redis服务器连接密码 | 
+| config.jedis.database | 0 | Redis db |
+
+**Redis 开启的区别**
+
+| 开启 | 不开启 |
+| --- | --- |
+| 会话、登录状态保持 | 重启后丢失 |
+| 查询性能更高 | 查询性能低 |
+| 支持集群部署 | 不支持，会造成会话不共享、语音不互通等问题 |
+
+### xiaozhi
+
+小智智能设备相关配置项
+
+#### udp
+
+| 属性名 | 默认值 | 说明 |
+| --- | --- | --- |
+| xiaozhi.udp.udp-server-host | 127.0.0.1 | 接收小智设备语音的UDP服务器IP |
+| xiaozhi.udp.udp-server-port | 8884 | 接收小智设备语音的UDP服务器端口 |
+
+#### mqtt
+
+| 属性名 | 默认值 | 说明 |
+| --- | --- | --- |
+| xiaozhi.mqtt.type | talkx | MQTT服务器类别，可选值：`talkx`、`aliyun_ons` |
+| xiaozhi.mqtt.instance-id | | 阿里云MQTT实例ID |
+| xiaozhi.mqtt.endpoint | | 阿里云MQTT endpoint |
+| xiaozhi.mqtt.cloud-port | 5672 | 阿里云MQTT 云开发端口|
+| xiaozhi.mqtt.access-key | | 阿里云AK |
+| xiaozhi.mqtt.secret-key | | 阿里云AK Secret Key |
+| xiaozhi.mqtt.client-id-prefix-for-device | GID_test@@@ | 阿里云MQTT 客户端ID前缀 |
+| xiaozhi.mqtt.topic-of-server | device-server | 阿里云MQTT接收客户端消息的主题 |
+| xiaozhi.mqtt.topic-of-device | devices | 阿里云MQTT发送客户端的p2p主题 |
+
+类别选择 `talkx` 时，必须配置：`forest.variables.talkxCenterBaseUrl`
+
+#### asr
+
+语音识别配置
+
+| 属性名 | 默认值 | 说明 |
+| --- | --- | --- |
+| xiaozhi.asr.type | talkx | 语音识别服务类别，可选值：`talkx`、`sensevoice_fastapi` |
+
+类别选择 `talkx` 时，必须配置：`forest.variables.talkxCenterBaseUrl`
+类别选择`sensevoice_fastapi`时，必须配置：`forest.variables.sensevoiceFastApiUrl`
+
+> 对接 SenseVoice 的实现是官方提供的 [FastAPI接口](https://github.com/FunAudioLLM/SenseVoice/blob/main/api.py)，所以当你自己部署的SenseVoice时，需要使用这个API来启动。
+
+#### silero
+
+语音活动监测配置
+
+| 属性名 | 默认值 | 说明 |
+| --- | --- | --- |
+| xiaozhi.silero.model-path | ../conf/silero_vad.onnx | VAD 活动监测模型路径 |
+| xiaozhi.silero.start-threshold | 0.6 | 监测到说话开始的阈值 |
+| xiaozhi.silero.end-threshold | 0.45 | 监测到说话沉默的阈值，低于该阈值的声音代表沉默 |
+| xiaozhi.silero.min-silence-duration-ms | 1200 | 沉默超时时间，单位：毫秒。示例1.2秒内如果没有继续说话代表结束 |
+| xiaozhi.silero.timeout-sec | 10 | 超时时间，单位：秒。指定时间内从开始监听一直未说话则结束对话 |
+
+#### alibaba
+
+开启这个配置后，才允许使用阿里云百炼的大模型、音色、声音复刻功能。
+
+| 属性名 | 默认值 | 说明 |
+| --- | --- | --- |
+| xiaozhi.alibaba.dashscope-api-key | | 阿里云百炼API Key |
+| xiaozhi.alibaba.cosy-voice-default-model | cosyvoice-v2 | 阿里云语音生成默认模型 |
+| xiaozhi.alibaba.cosy-voice-default-voice | longxiaoxia_v2 | 阿里云语音生成默认音色 |
+
+#### bytedance
+
+开启这个配置后，才允许使用字节火山引擎的大模型、音色、声音复刻功能。
+
+| 属性名 | 默认值 | 说明 |
+| --- | --- | --- |
+| xiaozhi.bytedance.tts-url | wss://openspeech.bytedance.com/api/v1/tts/ws_binary | 火山引擎TTS服务器地址 |
+| xiaozhi.bytedance.app-id | | 火山引擎APP id |
+| xiaozhi.bytedance.access-token | | 火山引擎APP access token |
+| xiaozhi.bytedance.default-voice | zh_female_wanwanxiaohe_moon_bigtts | 火山引擎语音生成默认音色 |
+
+#### memory
+
+记忆管理相关配置
+
+| 属性名 | 默认值 | 说明 |
+| --- | --- | --- |
+| xiaozhi.memory.type | none | 长期记忆服务类别。可选值：`none`、`mem0`
+
+类别选择`mem0`时，必须配置：`forest.variables.mem0baseUrl`
+
+> - `none` 指空的实现，不会管理记忆。
+> - 对接 `mem0` 的实现是开源项目部署的API。因此当你部署好`mem0`之后，需要使用 [main.py](src%2Fmain%2Fjava%2Forg%2Fbigmouth%2Fgpt%2Fxiaozhi%2Fmemory%2Fmem0%2Fmain.py) 来启动。
+
+
+
+
+## ❓常见问题
+- **小智设备是使用WebSocket协议通信的吗？**  
+不是。与小虾官方一致，使用的是 MQTT+UDP 协议。
+
+
+- **小智设备在AI语音回答时慢是什么原因？**  
+默认配置下，为了便于大家快速测试。TalkX官方提供了代理服务（包括ASR、LLM、TTS），对话过程中的语音识别、语音生成默认都是经过了TalkX官方，所以中途多了一个环节，而且没有使用流式处理，所以会比较慢。  
+**你可以通过配置自己的ASR、TTS服务商来提高处理速度。**
+
+
+- **支持IoT控制小智设备吗？**  
+支持。通过大模型的意图识别和Function_Call实现的，因此你选择的大模型需要支持才可以。
+[main.py](src%2Fmain%2Fjava%2Forg%2Fbigmouth%2Fgpt%2Fxiaozhi%2Fmemory%2Fmem0%2Fmain.py)
+
+- **更多问题**  
+可以加QQ群交流：953272742
