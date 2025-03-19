@@ -2,7 +2,7 @@
   {
     "name": "TalkX-湾湾小何",
     "platformType": "talkx",
-    "role": "zh_female_wanwanxiaohe_moon_bigtts",
+    "role": "talkx_wanwanxiaohe",
     "languages": [
       "中文"
     ],
