@@ -51,7 +51,7 @@ xiaozhi:
   # UDP相关配置
   udp:
     # 本机UDP服务器地址，需要设备能够直接访问
-    udp-server-host: 172.16.30.29
+    udp-server-host: 127.0.0.1
     # UDP服务端口
     udp-server-port: 8884
 
