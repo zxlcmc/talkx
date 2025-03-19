@@ -15,6 +15,11 @@ TalkX 是一个基于大模型实现的聊天平台，界面适配移动端，�
 
 ![talkx.png](other%2Ftalkx.png)
 
+## 视频教程
+[Bilibili（一）两分钟在本地部署一个TalkX](https://www.bilibili.com/video/BV1C3QdYeErz/)
+
+[Bilibili（二）小智后台开源项目之TalkX部署](https://www.bilibili.com/video/BV17WQdYxE41/)
+
 ## 快速部署
 
 ### 1、安装Java运行环境：1.8+
