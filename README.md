@@ -184,7 +184,7 @@ TalkX 是一个基于大模型实现的聊天平台，界面适配移动端，�
 
 - **支持IoT控制小智设备吗？**  
 支持。通过大模型的意图识别和Function_Call实现的，因此你选择的大模型需要支持才可以。
-[main.py](src%2Fmain%2Fjava%2Forg%2Fbigmouth%2Fgpt%2Fxiaozhi%2Fmemory%2Fmem0%2Fmain.py)
+
 
 - **更多问题**  
 可以加QQ群交流：953272742
