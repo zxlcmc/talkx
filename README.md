@@ -167,6 +167,12 @@ TalkX 是一个基于大模型实现的聊天平台，界面适配移动端，�
 
 
 ## ❓常见问题
+- **如何添加新的模型？**  
+目前只能通过执行SQL脚本的方式添加新的模型。以下是一个示例，请在数据库里执行：
+    ```sql
+    insert into `ai_model` (`model_name`, `max_token`, `settle_currency`, `icon`) values ('deepseek-r1', '128000', 2, 'https://plugin-web.talkx.cn/images/model/gpt4.png');
+    ```
+
 - **小智设备是使用WebSocket协议通信的吗？**  
 不是。与小虾官方一致，使用的是 MQTT+UDP 协议。
 
