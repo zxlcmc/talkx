@@ -93,7 +93,7 @@ public class UdpClientContextBuilder {
                             }
                         }
 
-                        TtsService ttsService = ttsServiceFactory.createInstance(platformType, model, voice);
+                        TtsService ttsService = ttsServiceFactory.createInstance(sessionId, platformType, model, voice);
                         ttsService.init();
                         builder.ttsService(ttsService);
                     }

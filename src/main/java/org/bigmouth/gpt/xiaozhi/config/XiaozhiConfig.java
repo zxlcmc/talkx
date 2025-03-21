@@ -12,6 +12,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class XiaozhiConfig {
 
     /**
+     * 是否开启小智后台服务
+     */
+    private boolean enable = false;
+
+    /**
      * 默认模型
      */
     private String defaultLlmModel = "qwen-turbo";

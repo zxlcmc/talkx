@@ -12,6 +12,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.nio.NioDatagramChannel;
 import lombok.extern.slf4j.Slf4j;
+import org.bigmouth.gpt.xiaozhi.config.XiaozhiConfig;
 import org.bigmouth.gpt.xiaozhi.config.XiaozhiUdpConfig;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.annotation.Configuration;
@@ -40,11 +41,13 @@ public class NettyUDPServer implements DisposableBean {
                 }
             });
 
-    public NettyUDPServer(XiaozhiUdpConfig xiaozhiUdpConfig, NettyChannelInboundHandler channelInboundHandler, ClientAddressHolder clientAddressHolder) {
+    public NettyUDPServer(XiaozhiConfig xiaozhiConfig, XiaozhiUdpConfig xiaozhiUdpConfig, NettyChannelInboundHandler channelInboundHandler, ClientAddressHolder clientAddressHolder) {
         this.channelInboundHandler = channelInboundHandler;
         this.clientAddressHolder = clientAddressHolder;
         try {
-            this.start(xiaozhiUdpConfig.getUdpServerPort());
+            if (xiaozhiConfig.isEnable()) {
+                this.start(xiaozhiUdpConfig.getUdpServerPort());
+            }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

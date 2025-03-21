@@ -1,9 +1,11 @@
 package org.bigmouth.gpt.xiaozhi.mqtt.talkx;
 
+import org.bigmouth.gpt.xiaozhi.autoconfigure.XiaozhiAutoConfigurer;
 import org.bigmouth.gpt.xiaozhi.config.XiaozhiMqttConfig;
 import org.bigmouth.gpt.xiaozhi.forest.TalkXApi;
 import org.bigmouth.gpt.xiaozhi.handler.MessageHandlerFactory;
 import org.bigmouth.gpt.xiaozhi.mqtt.MqttService;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2025/3/17
  */
 @Configuration
+@ConditionalOnBean(XiaozhiAutoConfigurer.class)
 @ConditionalOnProperty(name = "xiaozhi.mqtt.type", havingValue = "talkx")
 public class TalkXMqttServiceAutoConfigurer {
 

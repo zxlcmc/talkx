@@ -2,9 +2,11 @@ package org.bigmouth.gpt.xiaozhi.mqtt.aliyun;
 
 import lombok.extern.slf4j.Slf4j;
 import org.bigmouth.gpt.service.IDeviceService;
+import org.bigmouth.gpt.xiaozhi.autoconfigure.XiaozhiAutoConfigurer;
 import org.bigmouth.gpt.xiaozhi.config.XiaozhiMqttConfig;
 import org.bigmouth.gpt.xiaozhi.handler.MessageHandlerFactory;
 import org.bigmouth.gpt.xiaozhi.mqtt.MqttService;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Slf4j
 @Configuration
+@ConditionalOnBean(XiaozhiAutoConfigurer.class)
 @ConditionalOnProperty(name = "xiaozhi.mqtt.type", havingValue = "aliyun_ons")
 public class AliyunOnsMqttServiceAutoConfigurer  {
 

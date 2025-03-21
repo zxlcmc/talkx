@@ -1,8 +1,8 @@
 [
   {
-    "name": "TalkX-湾湾小何",
+    "name": "TalkX-内置声音",
     "platformType": "talkx",
-    "role": "talkx_wanwanxiaohe",
+    "role": "talkx_default_role",
     "languages": [
       "中文"
     ],

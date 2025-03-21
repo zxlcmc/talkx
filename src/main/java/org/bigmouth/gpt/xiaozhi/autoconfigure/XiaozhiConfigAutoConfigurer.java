@@ -1,11 +1,12 @@
-package org.bigmouth.gpt.xiaozhi.config;
+package org.bigmouth.gpt.xiaozhi.autoconfigure;
 
+import org.bigmouth.gpt.xiaozhi.config.*;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * @author Allen Hu
- * @date 2025/2/21
+ * @date 2025/3/21
  */
 @Configuration
 @EnableConfigurationProperties({
@@ -16,7 +17,8 @@ import org.springframework.context.annotation.Configuration;
         XiaozhiAlibabaConfig.class,
         XiaozhiByteDanceConfig.class,
         XiaozhiMemoryConfig.class,
-        XiaozhiAsrConfig.class
+        XiaozhiAsrConfig.class,
+        XiaozhiTalkXConfig.class
 })
-public class XiaozhiAutoConfigurer {
+public class XiaozhiConfigAutoConfigurer {
 }

@@ -30,6 +30,8 @@ import static org.bigmouth.gpt.service.impl.DeviceServiceImpl.parse2ClientIdSuff
 /**
  * MQTT转发客户端，用于连接MQTT服务器并处理消息
  * @author Allen Hu
+ * @author Claude 3.5
+ * @author TongYi
  * @date 2025/3/18
  */
 @Slf4j
@@ -90,14 +92,14 @@ public class TalkXMqttFrontEndClient implements DisposableBean {
                         break;
                     }
                 } catch (java.net.SocketException e) {
-                    log.error("获取网卡信息失败", e);
+                    log.error("Get network interface information failed", e);
                 }
             }
 
             if (macAddress.length() > 0) {
                 return macAddress.toString();
             }
-            log.warn("未找到合适的网卡，使用随机UUID作为客户端ID");
+            log.warn("No network interface found, using random UUID as client ID");
         } catch (Exception e) {
             log.error("生成客户端ID失败", e);
         }
@@ -131,19 +133,19 @@ public class TalkXMqttFrontEndClient implements DisposableBean {
             mqttClient.setCallback(new MqttCallback() {
                 @Override
                 public void disconnected(MqttDisconnectResponse disconnectResponse) {
-                    log.info("MQTT连接已断开: {}", disconnectResponse.getReasonString());
+                    log.info("MQTT Connection lost: {}", disconnectResponse.getReasonString());
                     scheduleReconnect();
                 }
 
                 @Override
                 public void mqttErrorOccurred(MqttException exception) {
-                    log.error("MQTT错误", exception);
+                    log.error("MQTT error occurred: ", exception);
                 }
 
                 @Override
                 public void messageArrived(String topic, MqttMessage message) {
                     String json = new String(message.getPayload());
-                    log.info("收到MQTT消息, topic: {}, payload: {}", topic, json);
+                    log.info("Receive MQTT message, topic: {}, payload: {}", topic, json);
 
                     DataPacket dataPacket = JSONObject.parseObject(json, DataPacket.class);
                     MessageType messageType = dataPacket.of();
@@ -169,12 +171,11 @@ public class TalkXMqttFrontEndClient implements DisposableBean {
 
                 @Override
                 public void deliveryComplete(IMqttToken token) {
-                    log.debug("消息发送完成");
                 }
 
                 @Override
                 public void connectComplete(boolean reconnect, String serverURI) {
-                    log.info("MQTT{}连接成功", reconnect ? "重新" : "");
+                    log.info("MQTT {} Successful", reconnect ? "reconnect" : "connect");
                     if (reconnectTask != null) {
                         reconnectTask.cancel(false);
                     }
@@ -182,13 +183,12 @@ public class TalkXMqttFrontEndClient implements DisposableBean {
 
                 @Override
                 public void authPacketArrived(int reasonCode, MqttProperties properties) {
-                    log.debug("认证包已到达, reasonCode: {}", reasonCode);
                 }
             });
 
             mqttClient.connect(connOpts).waitForCompletion();
         } catch (MqttException e) {
-            log.error("MQTT连接失败", e);
+            log.error("MQTT connect failed", e);
             scheduleReconnect();
         }
     }
@@ -202,7 +202,7 @@ public class TalkXMqttFrontEndClient implements DisposableBean {
                 scheduler.shutdown();
             }
         } catch (MqttException e) {
-            log.error("MQTT断开连接失败", e);
+            log.error("MQTT shutdown failed", e);
         }
     }
 
@@ -217,12 +217,12 @@ public class TalkXMqttFrontEndClient implements DisposableBean {
                 MqttMessage mqttMessage = new MqttMessage(JsonHelper.convert2bytes(message));
                 mqttMessage.setQos(QOS);
                 mqttClient.publish(topic, mqttMessage);
-                log.info("发送消息成功, topic: {}, payload: {}", topic, message);
+                log.info("MQTT message send success, topic: {}, payload: {}", topic, message);
             } else {
-                log.warn("MQTT未连接，无法发送消息");
+                log.warn("MQTT not connected, send fail. topic: {}, payload: {}", topic, message);
             }
         } catch (MqttException e) {
-            log.error("MQTT发送消息失败", e);
+            log.error("MQTT message send fail, topic: {}, payload: {}", topic, message);
         }
     }
 
@@ -232,7 +232,7 @@ public class TalkXMqttFrontEndClient implements DisposableBean {
         }
 
         reconnectTask = scheduler.schedule(() -> {
-            log.info("尝试重新连接MQTT...");
+            log.info("MQTT try reconnect...");
             connect();
         }, RECONNECT_DELAY, TimeUnit.MILLISECONDS);
     }
