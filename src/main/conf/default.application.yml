@@ -48,6 +48,8 @@ config:
 #    host: 127.0.0.1
 #    password: 123456
 xiaozhi:
+  # 是否开启小智服务
+  enable: true
   # UDP相关配置
   udp:
     # 本机UDP服务器地址，需要设备能够直接访问
@@ -93,6 +95,9 @@ xiaozhi:
 #    app-id: <app-id>
 #    access-token: <access-token>
 #    default-voice: zh_female_wanwanxiaohe_moon_bigtts
+  talkx:
+    default-tts-platform-type: bytedance
+    default-voice-role: zh_female_wanwanxiaohe_moon_bigtts
   memory:
     # 设置记忆类型：none、mem0
     # - mem0：必须配置 forest.variables.mem0baseUrl
