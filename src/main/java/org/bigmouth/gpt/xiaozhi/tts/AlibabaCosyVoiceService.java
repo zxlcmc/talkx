@@ -41,4 +41,22 @@ public class AlibabaCosyVoiceService implements VoiceReprintService {
             return null;
         }
     }
+
+    @Override
+    public VoiceReprintResult reprint(VoiceReprintRequest request) {
+        try {
+            String modelNamePrefix = request.getModelNamePrefix();
+            String voiceSrcUrl = request.getVoiceSrcUrl();
+            String targetModel = "cosyvoice-v1";
+            String apiKey = xiaozhiAlibabaConfig.getDashscopeApiKey();
+            VoiceEnrollmentService service = new VoiceEnrollmentService(apiKey);
+            Voice myVoice = service.createVoice(targetModel, modelNamePrefix, voiceSrcUrl);
+            log.info("声音复刻成功。{}", myVoice);
+            String voiceId = myVoice.getVoiceId();
+            return new VoiceReprintResult().setAudioModel(targetModel).setAudioRole(voiceId);
+        } catch (NoApiKeyException | InputRequiredException e) {
+            log.error("创建复刻声音失败", e);
+            return null;
+        }
+    }
 }

@@ -9,9 +9,7 @@ import org.bigmouth.gpt.entity.UserVoiceReprint;
 import org.bigmouth.gpt.interceptor.ContextFactory;
 import org.bigmouth.gpt.service.IUserFriendMediaConfigService;
 import org.bigmouth.gpt.service.IUserVoiceReprintService;
-import org.bigmouth.gpt.xiaozhi.tts.TtsPlatformType;
-import org.bigmouth.gpt.xiaozhi.tts.VoiceReprintService;
-import org.bigmouth.gpt.xiaozhi.tts.VoiceReprintServiceFactory;
+import org.bigmouth.gpt.xiaozhi.tts.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -80,17 +78,19 @@ public class UserVoiceController {
         if (null == voiceReprintService) {
             return ResponseEntity.badRequest().body("不支持的语音平台。");
         }
-        String modelId = voiceReprintService.reprint(req.getVoiceSrcUrl(), "talkx" + userId);
-        if (null == modelId) {
+        String voiceSrcUrl = req.getVoiceSrcUrl();
+        String modelNamePrefix = "talkx" + userId;
+        VoiceReprintResult result = voiceReprintService.reprint(new VoiceReprintRequest().setVoiceSrcUrl(voiceSrcUrl).setModelNamePrefix(modelNamePrefix));
+        if (null == result) {
             return ResponseEntity.badRequest().body("创建失败，请联系管理员。");
         }
-
+        String modelId = result.getAudioRole();
         UserVoiceReprint reprint = new UserVoiceReprint();
         reprint.setUserId(userId);
         reprint.setVoiceName(req.getVoiceName());
-        reprint.setVoiceSrcUrl(req.getVoiceSrcUrl());
+        reprint.setVoiceSrcUrl(voiceSrcUrl);
         reprint.setAudioPlatformType(defaultType.name());
-        reprint.setAudioModel("cosyvoice-v1");
+        reprint.setAudioModel(result.getAudioModel());
         reprint.setAudioRole(modelId);
         userVoiceReprintService.save(reprint);
         return ResponseEntity.ok(reprint);
