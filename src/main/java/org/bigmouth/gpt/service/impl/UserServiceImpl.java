@@ -103,7 +103,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             }
             User user = new User()
                     .setPhoneNum(phoneNum)
-                    .setModel("qwen-turbo")
+                    .setModel(applicationConfig.getLlmModelName())
                     .setName(phoneNum)
                     .setInviteCode(inviteCodeService.getInviteCode());
             super.saveOrUpdate(user);

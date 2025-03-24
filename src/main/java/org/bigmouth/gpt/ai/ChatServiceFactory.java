@@ -138,7 +138,7 @@ public class ChatServiceFactory implements BeanPostProcessor {
                 modelName = Optional.ofNullable(friendFixedModel)
                         .orElseGet(() -> Optional.ofNullable(user)
                                 .map(User::getSelectedModelName)
-                                .orElse(Model.GPT_3_5_TURBO.getName()));
+                                .orElse(applicationConfig.getLlmModelName()));
                 aiModel = aiModelService.get(modelName);
             }
             if (Objects.isNull(aiModel)) {
