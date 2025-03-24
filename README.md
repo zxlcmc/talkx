@@ -81,6 +81,8 @@ TalkX 是一个基于大模型实现的聊天平台，界面适配移动端，�
 
 小智智能设备相关配置项
 
+> 下面关于使用 TalkX 作为服务器类别的（包括MQTT、asr、TTS等），我们只是提供了一个免费测试的代理。不保证服务可用性，请根据实际情况选择。
+
 | 属性名            | 默认值 | 说明                                   |
 |----------------| --- |--------------------------------------|
 | xiaozhi.enable | false | 是否开启小智服务。当 `true` 时才会启动 MQTT 和 UDP 连接。 |
@@ -165,7 +167,9 @@ TalkX 相关配置，包括语言模型、音色、声音复刻等。
 | default-voice-role | zh_female_wanwanxiaohe_moon_bigtts | 默认的音色 |
 | tts-stream-buffer-size | 8000 | TTS流式缓冲区大小，单位：字节 |
 
-当未设置 alibaba 或 bytedance 时，若在智体中选择了这些平台的语音音色，则会通过 TalkX 代理实现语音生成。反之，则会使用已配置的对应平台。
+当未设置 alibaba 或 bytedance 时，若在智体中选择了这些平台的语音音色，则会通过 TalkX 作为服务商实现语音生成。反之，则会使用已配置的对应平台。  
+
+使用 TalkX 作为TTS服务商类别时，必须配置：`forest.variables.talkxCenterBaseUrl`
 
 #### memory
 
