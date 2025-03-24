@@ -6,15 +6,18 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.apache.commons.io.IOUtils;
 import org.bigmouth.gpt.xiaozhi.config.XiaozhiTalkXConfig;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 /**
  * @author Allen Hu
+ * @author DeepSeek R1
  * @date 2025/3/18
  */
 @Slf4j
@@ -50,17 +53,22 @@ public class TalkXTtsService implements TtsService {
         try {
             ttsConfig.setText(text);
 
+            String url = UriComponentsBuilder.fromUriString(talkxCenterBaseUrl)
+                    .path("/xiaozhi/tts_sse")
+                    .build()
+                    .toString();
             Request request = new Request.Builder()
-                    .url(talkxCenterBaseUrl)
+                    .url(url)
                     .post(RequestBody.create(JsonHelper.convert(ttsConfig), MediaType.get("application/json")))
                     .build();
-
             response = okHttpClient.newCall(request).execute();
             if (response.isSuccessful() && response.body() != null) {
                 InputStream inputStream = response.body().byteStream();
                 byte[] buffer = new byte[xiaozhiTalkXConfig.getTtsStreamBufferSize()];
-                while (inputStream.read(buffer) != -1) {
-                    frameHandler.accept(buffer);
+                int bytesRead;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    byte[] validData = Arrays.copyOfRange(buffer, 0, bytesRead);
+                    frameHandler.accept(validData);
                 }
             }
         } catch (IOException e) {
