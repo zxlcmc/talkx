@@ -188,10 +188,15 @@ TalkX 相关配置，包括语言模型、音色、声音复刻等。
 
 
 ## ❓常见问题
+- **Windows下运行 `start.bat` 直接闪退：**  
+请查看 `/logs` 目录下的日志文件，根据报错信息去解决。
+
+
 - **如何添加新的模型？**  
 目前只能通过执行SQL脚本的方式添加新的模型。以下是一个示例，请在数据库里执行：
     ```sql
-    insert into `ai_model` (`model_name`, `max_token`, `settle_currency`, `icon`) values ('deepseek-r1', '128000', 2, 'https://plugin-web.talkx.cn/images/model/gpt4.png');
+    insert into `ai_model` (`model_name`, `max_token`, `settle_currency`, `icon`) 
+    values ('deepseek-r1', '128000', 2, 'https://plugin-web.talkx.cn/images/model/gpt4.png');
     ```
 
 - **小智设备是使用WebSocket协议通信的吗？**  
@@ -199,7 +204,7 @@ TalkX 相关配置，包括语言模型、音色、声音复刻等。
 
 
 - **小智设备在AI语音回答时慢是什么原因？**  
-默认配置下，为了便于大家快速测试。TalkX官方提供了代理服务（包括ASR、LLM、TTS），对话过程中的语音识别、语音生成默认都是经过了TalkX官方，所以中途多了一个环节，而且没有使用流式处理，所以会比较慢。  
+默认配置下，为了便于大家快速测试。TalkX官方提供了代理服务（包括ASR、LLM、TTS），对话过程中的语音识别、语音生成默认都是经过了TalkX官方，整个过程多了一层“代理转发”，所以会比较慢。  
 **你可以通过配置自己的ASR、TTS服务商来提高处理速度。**
 
 
