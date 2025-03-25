@@ -40,6 +40,8 @@
 
 **源码编译环境：**
 
+> 需要准备「IDF开发环境」，查看安装教程：[《Windows搭建 ESP IDF 5.3.2开发环境以及编译小智》](https://icnynnzcwou8.feishu.cn/wiki/JEYDwTTALi5s2zkGlFGcDiRknXf)
+
 将下面指定的配置项的值修改为 `https://api.talkx.cn/xiaozhi/ota/` ，如果是开源部署的，请按你的实际服务器地址进行修改。
 
 方式1、使用 `scripts/release.py` 编译：  
