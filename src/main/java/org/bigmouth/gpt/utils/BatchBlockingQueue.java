@@ -93,4 +93,9 @@ public class BatchBlockingQueue<T> implements BatchQueue<T> {
             startTime.set(System.currentTimeMillis());
         }
     }
+
+    public void destroy() {
+        this.clear();
+        this.purgeThread.shutdownNow();
+    }
 }

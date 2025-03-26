@@ -224,6 +224,7 @@ public class UdpClientContext {
         if (!compareAndSet(State.Goodbye, State.Goodbye)) {
             set(State.Goodbye);
             audioPackets.clear();
+            audioBuffer.destroy();
             opusEncoderUtils.close();
             opusDecoderUtils.close();
             this.stopVADListener();
