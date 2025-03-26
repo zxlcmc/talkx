@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.bigmouth.gpt.xiaozhi.config.XiaozhiAlibabaConfig;
 import org.bigmouth.gpt.xiaozhi.config.XiaozhiByteDanceConfig;
 import org.bigmouth.gpt.xiaozhi.config.XiaozhiTalkXConfig;
+import org.bigmouth.gpt.xiaozhi.tts.ali.CosyVoiceObjectPool;
+import org.bigmouth.gpt.xiaozhi.tts.volcengine.SpeechWsClientObjectPool;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,14 +22,18 @@ public class TtsServiceFactory {
     private final XiaozhiAlibabaConfig xiaozhiAlibabaConfig;
     private final XiaozhiByteDanceConfig xiaozhiByteDanceConfig;
     private final XiaozhiTalkXConfig xiaozhiTalkXConfig;
+    private final CosyVoiceObjectPool cosyVoiceObjectPool;
+    private final SpeechWsClientObjectPool speechWsClientObjectPool;
 
     @Value("${forest.variables.talkxCenterBaseUrl}")
     private String talkxCenterBaseUrl;
 
-    public TtsServiceFactory(XiaozhiAlibabaConfig xiaozhiAlibabaConfig, XiaozhiByteDanceConfig xiaozhiByteDanceConfig, XiaozhiTalkXConfig xiaozhiTalkXConfig) {
+    public TtsServiceFactory(XiaozhiAlibabaConfig xiaozhiAlibabaConfig, XiaozhiByteDanceConfig xiaozhiByteDanceConfig, XiaozhiTalkXConfig xiaozhiTalkXConfig, CosyVoiceObjectPool cosyVoiceObjectPool, SpeechWsClientObjectPool speechWsClientObjectPool) {
         this.xiaozhiAlibabaConfig = xiaozhiAlibabaConfig;
         this.xiaozhiByteDanceConfig = xiaozhiByteDanceConfig;
         this.xiaozhiTalkXConfig = xiaozhiTalkXConfig;
+        this.cosyVoiceObjectPool = cosyVoiceObjectPool;
+        this.speechWsClientObjectPool = speechWsClientObjectPool;
     }
 
     public TtsService createInstance(String sessionId, TtsPlatformType ttsPlatformType, String voiceModel, String voiceRole) {
@@ -48,7 +54,7 @@ public class TtsServiceFactory {
                 }
                 voiceModel = Optional.ofNullable(voiceModel).orElse(xiaozhiAlibabaConfig.getCosyVoiceDefaultModel());
                 voiceRole = Optional.ofNullable(voiceRole).orElse(xiaozhiAlibabaConfig.getCosyVoiceDefaultVoice());
-                return new AlibabaDashscopeTtsService(dashscopeApiKey, voiceModel, voiceRole);
+                return new AlibabaDashscopeTtsService(cosyVoiceObjectPool, dashscopeApiKey, voiceModel, voiceRole);
             case ByteDance:
                 String ttsUrl = xiaozhiByteDanceConfig.getTtsUrl();
                 String appId = xiaozhiByteDanceConfig.getAppId();
@@ -57,7 +63,7 @@ public class TtsServiceFactory {
                     throw new IllegalArgumentException("ByteDance TTS URL, App ID or Access Token is not set.");
                 }
                 voiceRole = Optional.ofNullable(voiceRole).orElse(xiaozhiByteDanceConfig.getDefaultVoice());
-                return new ByteDanceTtsService(ttsUrl, appId, accessToken, voiceRole);
+                return new ByteDanceTtsService(appId, voiceRole, speechWsClientObjectPool);
             case TalkX:
                 TtsPlatformType defaultTtsPlatformType = xiaozhiTalkXConfig.getDefaultTtsPlatformType();
                 voiceModel = Optional.ofNullable(voiceModel).orElse(xiaozhiTalkXConfig.getDefaultVoiceModel());
