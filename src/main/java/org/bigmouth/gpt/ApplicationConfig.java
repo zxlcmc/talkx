@@ -40,6 +40,11 @@ public class ApplicationConfig {
     private String llmApiKey = "";
 
     /**
+     * LLM 默认模型
+     */
+    private String llmModelName = "qwen-turbo";
+
+    /**
      * 系统介绍
      */
     private List<String> systemIntro = Lists.newArrayList("你好！我是「TalkX」，你可以跟我聊任何你感兴趣的话题，无论是关于生活、工作、娱乐、教育、科技等等");
@@ -93,6 +98,8 @@ public class ApplicationConfig {
      * 是否开启Redis缓存
      */
     private boolean enableRedisCache = false;
+
+
 
     @Data
     public static class CustomModel {
