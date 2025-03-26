@@ -54,7 +54,9 @@ public class BatchBlockingQueue<T> implements BatchQueue<T> {
     }
 
     private void startDrain() {
-        if (!purgeThread.getQueue().isEmpty()) {
+        boolean shutdown = purgeThread.isShutdown();
+        boolean terminated = purgeThread.isTerminated();
+        if (shutdown || terminated) {
             return;
         }
         purgeThread.submit(() -> {
