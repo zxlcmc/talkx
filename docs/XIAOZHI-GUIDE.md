@@ -3,6 +3,8 @@
 
 **TalkX 可以选择[开源部署](https://github.com/big-mouth-cn/talkx)，或直接连接 [TalkX 官网](https://web.talkx.cn)。以下主要介绍如何连接 TalkX 官网。如需连接自己部署的版本，只需修改相关地址即可。**
 
+![iShot_2025-04-03_11.05.42.png](screenshot%2FiShot_2025-04-03_11.05.42.png)
+
 --- 
 
 ## 什么是小智？
