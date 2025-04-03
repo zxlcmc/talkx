@@ -1,0 +1,108 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: talkx
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    dynamic:
+      primary: talkx
+      strict: false
+      datasource:
+        talkx:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://192.168.100.18:3306/talkx-xiaozhi?useUnicode=true&useSSL=false&characterEncoding=utf8
+          username: root
+          password: 770222
+          type: com.alibaba.druid.pool.DruidDataSource
+          druid:
+            initial-size: 8
+            min-idle: 8
+            max-active: 50
+            test-on-borrow: true
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      logic-delete-field: deleted
+config:
+  # LLM相关配置，只要是支持OpenAI协议的都支持，默认提供 AIGateway 的测试账号
+  llm-api-host: https://api.aigateway.work
+  llm-api-key: sk-k7lNcib7o54AV375dgKOIDFcZijZi2Zb02M3TWrs
+  # 是否开启Redis缓存，如果不启用，会造成以下问题：
+  # 1. 当服务重启后，会话数据会丢失，如登录状态。
+  # 当使用集群时必须开启Redis换成，否则无法正常使用。
+  enable-redis-cache: false
+  # 如果开启Redis缓存，请完成下面的配置
+#  jedis:
+#    host: 127.0.0.1
+#    password: 123456
+xiaozhi:
+  # UDP相关配置
+  udp:
+    # 本机UDP服务器地址，需要设备能够直接访问
+    udp-server-host: 192.168.100.18
+    # UDP服务端口
+    udp-server-port: 8884
+
+  # MQTT相关配置
+  mqtt:
+    # 设置MQTT服务类型：talkx、aliyun_ons
+    # - talkx：必须配置 forest.variables.talkxCenterBaseUrl
+    # - aliyun_ons：必须完成 阿里云ONS-MQTT服务配置
+    type: talkx
+
+    # 阿里云ONS-MQTT服务配置
+#    instance-id: <instance-id>
+#    endpoint: <endpoint>
+#    cloud-port: 5672
+#    access-key: <cloud-port>
+#    secret-key: <secret-key>
+#    client-id-prefix-for-device: "GID_test@@@"
+#    topic-of-server: device-server
+#    topic-of-device: devices
+
+  # 语音识别相关配置
+  asr:
+    # 语音识别类型：talkx、sensevoice_fastapi
+    # - talkx：必须配置  forest.variables.talkxCenterBaseUrl
+    # - sensevoice_fastapi：必须配置 forest.variables.sensevoiceFastApiUrl
+    type: talkx
+  silero:
+    model-path: ../conf/silero_vad.onnx
+    start-threshold: 0.6
+    end-threshold: 0.45
+    min-silence-duration-ms: 1200
+    timeout-sec: 10
+#  alibaba:
+#    dashscope-api-key: <dashscope-api-key>
+#    cosy-voice-default-model: cosyvoice-v2
+#    cosy-voice-default-voice: longxiaoxia_v2
+#  bytedance:
+#    tts-url: wss://openspeech.bytedance.com/api/v1/tts/ws_binary
+#    app-id: <app-id>
+#    access-token: <access-token>
+#    default-voice: zh_female_wanwanxiaohe_moon_bigtts
+  memory:
+    # 设置记忆类型：none、mem0
+    # - mem0：必须配置 forest.variables.mem0baseUrl
+    type: none
+forest:
+  log-enabled: false
+  variables:
+    # 设置 Mem0 接口地址
+#    mem0baseUrl: http://172.27.1.26:8000
+    # 设置 TalkX 中心接口地址
+    talkxCenterBaseUrl: https://api.talkx.cn
+    # 设置 SenseVoice FastAPI 接口地址
+#    sensevoiceFastApiUrl: http://127.0.0.1:8000
